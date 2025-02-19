@@ -1,0 +1,50 @@
+[gd_scene load_steps=7 format=4 uid="uid://c28xx8jintpel"]
+
+[ext_resource type="PackedScene" uid="uid://c40piw0ou5tdq" path="res://scenes/player.tscn" id="1_v2ba3"]
+[ext_resource type="Texture2D" uid="uid://omqxtwapuxjn" path="res://Sprites/Environment/tutorial area - test/tutorial area.png" id="2_nlgso"]
+[ext_resource type="PackedScene" uid="uid://b1b7v1ng727w3" path="res://scenes/basic_ui.tscn" id="3_3qnh3"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ij0ri"]
+texture = ExtResource("2_nlgso")
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+5:0/0 = 0
+6:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_85mb2"]
+sources/0 = SubResource("TileSetAtlasSource_ij0ri")
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_x8lxk"]
+
+[node name="Game" type="Node2D"]
+
+[node name="camera" type="Camera2D" parent="."]
+position = Vector2(0, 10)
+zoom = Vector2(3, 3)
+
+[node name="Player" parent="." instance=ExtResource("1_v2ba3")]
+position = Vector2(0, -86)
+
+[node name="Pod" type="TileMapLayer" parent="."]
+position = Vector2(2, 0)
+tile_map_data = PackedByteArray("AAD8/wAAAAAAAAAAAAD+/wAAAAABAAAAAAD9/wAAAAACAAAAAAD//wAAAAACAAAAAAAAAAAAAAADAAAAAAACAAAAAAADAAAAAAABAAAAAAABAAAAAAAGAAAAAAABAAAAAAAFAAAAAAADAAAAAAD5/wAAAAADAAAAAAD4/wAAAAAAAAAAAAD7/wAAAAABAAAAAAD6/wAAAAAAAAAAAAAEAAAAAAAAAAAAAAADAAAAAAABAAAAAAD4/wEAAAAEAAAAAAD5/wEAAAAGAAAAAAD6/wEAAAAEAAAAAAD7/wEAAAAEAAAAAAD8/wEAAAAEAAAAAAD9/wEAAAAEAAAAAAD+/wEAAAAEAAAAAAD//wEAAAAEAAAAAAAAAAEAAAAEAAAAAAABAAEAAAAEAAAAAAACAAEAAAAEAAAAAAADAAEAAAAGAAAAAAAEAAEAAAAEAAAAAAAFAAEAAAAEAAAAAAAGAAEAAAAEAAAAAAAGAAIAAAAEAAAAAAAFAAIAAAAEAAAAAAAFAAMAAAAEAAAAAAAEAAMAAAAEAAAAAAADAAMAAAAEAAAAAAACAAMAAAAEAAAAAAACAAIAAAAEAAAAAAABAAIAAAAEAAAAAAAAAAIAAAAEAAAAAAD//wIAAAAFAAAAAAD+/wIAAAAGAAAAAAD9/wIAAAAEAAAAAAD8/wIAAAAEAAAAAAD7/wIAAAAEAAAAAAD6/wIAAAAGAAAAAAD5/wIAAAAEAAAAAAD5/wMAAAAEAAAAAAD4/wIAAAAEAAAAAAD6/wMAAAAEAAAAAAD7/wMAAAAEAAAAAAD8/wMAAAAEAAAAAAD9/wMAAAAEAAAAAAD+/wMAAAAEAAAAAAD//wMAAAAEAAAAAAAAAAMAAAAEAAAAAAADAAIAAAAEAAAAAAAEAAIAAAAEAAAAAAABAAMAAAAEAAAAAAA=")
+tile_set = SubResource("TileSet_85mb2")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("WorldBoundaryShape2D_x8lxk")
+
+[node name="UI" parent="." instance=ExtResource("3_3qnh3")]
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = -188.0
+offset_top = -93.0
+offset_right = -188.0
+offset_bottom = -93.0
+grow_horizontal = 1
+grow_vertical = 1
